@@ -40,6 +40,8 @@ import type {
   TopNavBarDesktopLayoutProps,
   TopNavBarDesktopLayoutStyleProps
 } from './props'
+import { IconHamburgerLine } from '@instructure/ui-icons'
+import TopNavBar from '../..'
 
 /**
 ---
@@ -108,12 +110,30 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
     return !!renderUser && React.Children.count(renderUser.props.children) > 0
   }
 
+  get hasMenuItemsBlock() {
+    const { renderMenuItems } = this.props
+    return (
+      !!renderMenuItems &&
+      React.Children.count(renderMenuItems.props.children) > 0
+    )
+  }
+
+  get hasBreadcrumbBlock() {
+    const { renderBreadcrumb } = this.props
+    // TODO: check the children part
+    return (
+      !!renderBreadcrumb &&
+      React.Children.count(renderBreadcrumb.props.children) > 0
+    )
+  }
+
   render() {
     const {
       renderBrand,
       renderMenuItems,
       renderActionItems,
       renderUser,
+      renderBreadcrumb,
       navLabel,
       styles
     } = this.props
@@ -129,7 +149,24 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
           <div css={styles?.brandContainer}>{renderBrand}</div>
         )}
 
-        <div css={styles?.menuItemsContainer}>{renderMenuItems}</div>
+        {this.hasMenuItemsBlock && (
+          <div css={styles?.menuItemsContainer}>{renderMenuItems}</div>
+        )}
+
+        {!(this.hasBrandBlock || this.hasMenuItemsBlock) &&
+          this.hasBreadcrumbBlock && (
+            <div css={styles?.breadcrumbContainer}>
+              <TopNavBar.Item
+                id="iconItem"
+                variant="icon"
+                renderIcon={<IconHamburgerLine />}
+                tooltip="Icon variant"
+              >
+                Icon variant
+              </TopNavBar.Item>
+              {renderBreadcrumb}
+            </div>
+          )}
 
         {this.hasActionItemsBlock && (
           <div css={styles?.actionItemsContainer}>{renderActionItems}</div>

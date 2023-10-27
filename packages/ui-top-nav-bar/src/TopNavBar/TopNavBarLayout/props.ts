@@ -52,6 +52,7 @@ import { topNavBarItemTooltipPropType } from '../TopNavBarItem/props'
 import { TopNavBarLayout } from './index'
 import type { DesktopLayoutOwnProps } from './DesktopLayout/props'
 import type { SmallViewportLayoutOwnProps } from './SmallViewportLayout/props'
+import { Breadcrumb } from '@instructure/ui-breadcrumb'
 
 type LayoutChild = React.ComponentElement<TopNavBarLayoutProps, TopNavBarLayout>
 
@@ -91,6 +92,9 @@ type CommonTopNavBarLayoutProps = {
    * Accepts a `<TopNavBar.User>` component.
    */
   renderUser?: UserChild
+
+  // TODO replace any
+  renderBreadcrumb?: any
 
   /**
    * The 'aria-label' for the underlying `<nav>` element
@@ -134,6 +138,8 @@ const commonPropTypes: PropValidators<CommonPropKeys> = {
   renderMenuItems: ChildrenPropTypes.oneOf([TopNavBarMenuItems]),
   renderActionItems: ChildrenPropTypes.oneOf([TopNavBarActionItems]),
   renderUser: ChildrenPropTypes.oneOf([TopNavBarUser]),
+  //TODO BreadCrumb wrapper
+  renderBreadcrumb: ChildrenPropTypes.oneOf([Breadcrumb]),
   navLabel: PropTypes.string,
   elementRef: PropTypes.func
 }
@@ -173,6 +179,7 @@ const commonAllowedProps: CommonAllowedPropKeys = [
   'renderMenuItems',
   'renderActionItems',
   'renderUser',
+  'renderBreadcrumb',
   'navLabel',
   'elementRef'
 ]

@@ -72,6 +72,7 @@ type TopNavBarDesktopLayoutStyle = ComponentStyle<
   | 'menuItemsContainer'
   | 'actionItemsContainer'
   | 'userContainer'
+  | 'breadcrumbContainer'
 >
 
 type TopNavBarDesktopLayoutStyleProps = {
