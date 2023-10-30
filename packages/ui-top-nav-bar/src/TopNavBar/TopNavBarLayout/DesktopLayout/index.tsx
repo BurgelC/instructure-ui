@@ -123,7 +123,6 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
 
   get hasBreadcrumbBlock() {
     const { renderBreadcrumb } = this.props
-    // TODO: check the children part
     return (
       !!renderBreadcrumb &&
       React.Children.count(renderBreadcrumb.props.children) > 0
@@ -141,6 +140,10 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
       styles
     } = this.props
 
+    // only render breadcrumb if there is no brand or menu items
+    const shouldRenderBreadcrumbBlock =
+      !(this.hasBrandBlock || this.hasMenuItemsBlock) && this.hasBreadcrumbBlock
+
     return (
       <nav
         {...omitProps(this.props, allowedProps)}
@@ -156,9 +159,7 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
           <div css={styles?.menuItemsContainer}>{renderMenuItems}</div>
         )}
 
-        {!(this.hasBrandBlock || this.hasMenuItemsBlock) &&
-          this.hasBreadcrumbBlock &&
-          renderBreadcrumb}
+        {shouldRenderBreadcrumbBlock && renderBreadcrumb}
 
         {this.hasActionItemsBlock && (
           <div css={styles?.actionItemsContainer}>{renderActionItems}</div>
