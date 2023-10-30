@@ -1472,6 +1472,10 @@ export type TopNavBarBrandTheme = {
   focusOutlineInset: string | 0
 }
 
+export type TopNavBarBreadcrumbTheme = {
+  color: Colors['textDarkest']
+}
+
 export type TopNavBarItemTheme = {
   fontSize: Typography['fontSizeMedium']
   fontFamily: Typography['fontFamily']

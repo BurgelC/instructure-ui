@@ -22,15 +22,17 @@
  * SOFTWARE.
  */
 
+/** @jsx jsx */
 import React, { Component } from 'react'
 import { TopNavBarBreadcrumbProps, TopNavBarBreadcrumbState } from './props'
 import TopNavBar from '../index'
 import { withDeterministicId } from '@instructure/ui-react-utils'
-import { withStyle } from '@instructure/emotion'
+import { withStyle, jsx } from '@instructure/emotion'
 import generateStyle from '../TopNavBarBreadcrumb/styles'
 import generateComponentTheme from '../TopNavBarBreadcrumb/theme'
 import { testable } from '@instructure/ui-testable'
 import { IconHamburgerLine } from '@instructure/ui-icons'
+import TopNavBarContext from '../TopNavBarContext'
 
 @withDeterministicId()
 @withStyle(generateStyle, generateComponentTheme)
@@ -39,32 +41,35 @@ class TopNavBarBreadcrumb extends Component<
   TopNavBarBreadcrumbProps,
   TopNavBarBreadcrumbState
 > {
-  constructor(props: TopNavBarBreadcrumbProps) {
-    super(props)
-    this.state = {}
-  }
+  // static propTypes = propTypes
+  // static allowedProps = allowedProps
+  static defaultProps = {}
+
+  declare context: React.ContextType<typeof TopNavBarContext>
+  static contextType = TopNavBarContext
+
+  ref: HTMLDivElement | null = null
 
   renderMenu() {
+    const { onClick } = this.props
     return (
       <TopNavBar.Item
         id="iconItem"
         variant="icon"
         renderIcon={<IconHamburgerLine />}
-        tooltip="Icon variant"
+        onClick={onClick}
       >
         Icon variant
       </TopNavBar.Item>
     )
   }
+
   render() {
-    const { children } = this.props
-
-    //const { styles } = this.props
-
+    const { children, styles } = this.props
     return (
-      <div /*css={styles?.breadcrumbContainer}*/>
-        {this.renderMenu()}
-        {children}
+      <div css={styles?.topNavBarBreadcrumb}>
+        <div css={styles?.iconContainer}>{this.renderMenu()}</div>
+        <div css={styles?.breadcrumbContainer}>{children}</div>
       </div>
     )
   }

@@ -23,7 +23,18 @@
  */
 
 import type { Theme } from '@instructure/ui-themes'
+import type { TopNavBarBreadcrumbTheme } from '@instructure/shared-types'
 
-const generateComponentTheme = (_theme: Theme): any => {}
+const generateComponentTheme = function (
+  _theme: Theme
+): TopNavBarBreadcrumbTheme {
+  const componentVariables: TopNavBarBreadcrumbTheme = {
+    color: 'oxford'
+  }
+
+  return {
+    ...componentVariables
+  }
+}
 
 export default generateComponentTheme

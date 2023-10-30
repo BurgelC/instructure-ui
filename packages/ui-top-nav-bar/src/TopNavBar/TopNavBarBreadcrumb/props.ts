@@ -24,17 +24,49 @@
 
 import React from 'react'
 import type { ViewOwnProps } from '@instructure/ui-view'
+import type { ComponentStyle, WithStyleProps } from '@instructure/emotion'
+import { TopNavBarContextType } from '../TopNavBarContext'
+import {
+  ChildrenOfType,
+  OtherHTMLAttributes,
+  TopNavBarBreadcrumbTheme
+} from '@instructure/shared-types'
+import TopNavBarBreadcrumb from './index'
 
-type TopNavBarBreadcrumbProps = TopNavBarBreadcrumbOwnProps
+type TopNavBarBreadcrumbProps = TopNavBarBreadcrumbOwnProps &
+  WithStyleProps<TopNavBarBreadcrumbTheme, TopNavBarBreadcrumbStyle> &
+  OtherHTMLAttributes<TopNavBarBreadcrumbOwnProps>
 
 type TopNavBarBreadcrumbState = { active: boolean }
 
+type BreadcrumbChild = React.ComponentElement<
+  TopNavBarBreadcrumbProps,
+  TopNavBarBreadcrumb
+>
+
 type TopNavBarBreadcrumbOwnProps = {
   id: string
-  children: React.ReactNode
+  children: ChildrenOfType<BreadcrumbChild>
   onClick?: (
     event: React.MouseEvent<ViewOwnProps> | React.KeyboardEvent<ViewOwnProps>
   ) => void
 }
 
-export type { TopNavBarBreadcrumbProps, TopNavBarBreadcrumbState }
+type TopNavBarBreadcrumbStyle = ComponentStyle<
+  | 'topNavBarBreadcrumb'
+  | 'container'
+  | 'iconContainer'
+  | 'icon'
+  | 'breadcrumbContainer'
+>
+
+type TopNavBarBreadcrumbStyleProps = {
+  layout: TopNavBarContextType['layout']
+}
+
+export type {
+  TopNavBarBreadcrumbProps,
+  TopNavBarBreadcrumbState,
+  TopNavBarBreadcrumbStyle,
+  TopNavBarBreadcrumbStyleProps
+}

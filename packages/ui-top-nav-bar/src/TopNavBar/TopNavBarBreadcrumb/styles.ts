@@ -23,7 +23,54 @@
  */
 
 import type { ComponentStyle } from '@instructure/emotion'
+import {
+  TopNavBarBreadcrumbProps,
+  TopNavBarBreadcrumbStyleProps
+} from './props'
+import { TopNavBarBreadcrumbTheme } from '@instructure/shared-types'
 
 type TopNavBarBreadcrumbStyle = ComponentStyle<any>
 
+const generateStyle = (
+  _componentTheme: TopNavBarBreadcrumbTheme,
+  _props: TopNavBarBreadcrumbProps,
+  _state: TopNavBarBreadcrumbStyleProps
+): TopNavBarBreadcrumbStyle => {
+  // const isDesktop = state.layout === 'desktop'
+
+  return {
+    topNavBarBreadcrumb: {
+      label: 'topNavBarBreadcrumb',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      border: 0,
+      outline: 0,
+      padding: 0,
+      margin: 0,
+      appearance: 'none',
+      textDecoration: 'none'
+    },
+    iconContainer: {
+      label: 'topNavBarBreadcrumb__iconContainer',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    icon: {
+      label: 'topNavBarBreadcrumb__icon',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    breadCrumbContainer: {
+      label: 'topNavBarBreadcrumb__breadCrumbContainer',
+      appearance: 'none',
+      textDecoration: 'none'
+    }
+  }
+}
+
 export type { TopNavBarBreadcrumbStyle }
+export default generateStyle
