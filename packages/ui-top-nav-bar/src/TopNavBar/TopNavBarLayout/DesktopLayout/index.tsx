@@ -40,8 +40,6 @@ import type {
   TopNavBarDesktopLayoutProps,
   TopNavBarDesktopLayoutStyleProps
 } from './props'
-import { IconHamburgerLine } from '@instructure/ui-icons'
-import TopNavBar from '../..'
 
 /**
 ---
@@ -159,19 +157,8 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
         )}
 
         {!(this.hasBrandBlock || this.hasMenuItemsBlock) &&
-          this.hasBreadcrumbBlock && (
-            <div css={styles?.breadcrumbContainer}>
-              <TopNavBar.Item
-                id="iconItem"
-                variant="icon"
-                renderIcon={<IconHamburgerLine />}
-                tooltip="Icon variant"
-              >
-                Icon variant
-              </TopNavBar.Item>
-              {renderBreadcrumb}
-            </div>
-          )}
+          this.hasBreadcrumbBlock &&
+          renderBreadcrumb}
 
         {this.hasActionItemsBlock && (
           <div css={styles?.actionItemsContainer}>{renderActionItems}</div>

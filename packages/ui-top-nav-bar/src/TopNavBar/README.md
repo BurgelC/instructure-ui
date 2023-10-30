@@ -1115,6 +1115,32 @@ example: true
             dropdownMenuToggleButtonLabel: 'Toggle Menu',
             dropdownMenuLabel: 'Main Menu',
           }}
+          renderBreadcrumb={(
+            <TopNavBar.Breadcrumb>
+            <Breadcrumb label="You are here:">
+              <Breadcrumb.Link href="#">Student Forecast</Breadcrumb.Link>
+              <Breadcrumb.Link href="#">University of Utah</Breadcrumb.Link>
+              <Breadcrumb.Link href="#">University of Utah Colleges</Breadcrumb.Link>
+              <Breadcrumb.Link>College of Life Sciences</Breadcrumb.Link>
+            </Breadcrumb>
+            </TopNavBar.Breadcrumb>
+          )}
+        />
+      )}
+    </TopNavBar>
+  </View>
+  <View as="div" margin="medium 0">
+    <TopNavBar>
+      {() => (
+        <TopNavBar.Layout
+          navLabel="Example navigation bar"
+          desktopConfig={{
+            hideActionsUserSeparator: false
+          }}
+          smallViewportConfig={{
+            dropdownMenuToggleButtonLabel: 'Toggle Menu',
+            dropdownMenuLabel: 'Main Menu',
+          }}
           renderBrand={(
             <TopNavBar.Brand
               screenReaderLabel="Brand name"
