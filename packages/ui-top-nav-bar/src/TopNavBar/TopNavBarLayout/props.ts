@@ -52,7 +52,7 @@ import { topNavBarItemTooltipPropType } from '../TopNavBarItem/props'
 import { TopNavBarLayout } from './index'
 import type { DesktopLayoutOwnProps } from './DesktopLayout/props'
 import type { SmallViewportLayoutOwnProps } from './SmallViewportLayout/props'
-import { Breadcrumb } from '@instructure/ui-breadcrumb'
+import { TopNavBarBreadcrumb } from '../TopNavBarBreadcrumb'
 
 type LayoutChild = React.ComponentElement<TopNavBarLayoutProps, TopNavBarLayout>
 
@@ -139,7 +139,7 @@ const commonPropTypes: PropValidators<CommonPropKeys> = {
   renderActionItems: ChildrenPropTypes.oneOf([TopNavBarActionItems]),
   renderUser: ChildrenPropTypes.oneOf([TopNavBarUser]),
   //TODO BreadCrumb wrapper
-  renderBreadcrumb: ChildrenPropTypes.oneOf([Breadcrumb]),
+  renderBreadcrumb: ChildrenPropTypes.oneOf([TopNavBarBreadcrumb]),
   navLabel: PropTypes.string,
   elementRef: PropTypes.func
 }

@@ -1104,7 +1104,7 @@ example: true
 ---
 <div>
   <View as="div" margin="medium 0">
-    <TopNavBar>
+    <TopNavBar inverseColor>
       {() => (
         <TopNavBar.Layout
           navLabel="Example navigation bar"

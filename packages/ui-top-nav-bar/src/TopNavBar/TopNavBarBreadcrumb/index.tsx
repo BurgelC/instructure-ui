@@ -50,6 +50,14 @@ class TopNavBarBreadcrumb extends Component<
 
   ref: HTMLDivElement | null = null
 
+  componentDidMount() {
+    this.props.makeStyles?.({ inverseColor: this.context.inverseColor })
+  }
+
+  componentDidUpdate() {
+    this.props.makeStyles?.({ inverseColor: this.context.inverseColor })
+  }
+
   renderMenu() {
     const { onClick } = this.props
     return (

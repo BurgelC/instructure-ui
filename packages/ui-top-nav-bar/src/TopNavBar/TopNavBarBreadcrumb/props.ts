@@ -61,7 +61,7 @@ type TopNavBarBreadcrumbStyle = ComponentStyle<
 >
 
 type TopNavBarBreadcrumbStyleProps = {
-  layout: TopNavBarContextType['layout']
+  inverseColor: TopNavBarContextType['inverseColor']
 }
 
 export type {

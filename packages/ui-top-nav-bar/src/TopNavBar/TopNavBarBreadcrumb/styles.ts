@@ -36,7 +36,7 @@ const generateStyle = (
   _props: TopNavBarBreadcrumbProps,
   _state: TopNavBarBreadcrumbStyleProps
 ): TopNavBarBreadcrumbStyle => {
-  // const isDesktop = state.layout === 'desktop'
+  //const { inverseColor } = state
 
   return {
     topNavBarBreadcrumb: {
