@@ -61,14 +61,16 @@ class TopNavBarBreadcrumb extends Component<
   renderMenu() {
     const { onClick } = this.props
     return (
-      <TopNavBar.Item
-        id="iconItem"
-        variant="icon"
-        renderIcon={<IconHamburgerLine />}
-        onClick={onClick}
-      >
-        Icon variant
-      </TopNavBar.Item>
+      <div css={this.props.styles?.icon}>
+        <TopNavBar.Item
+          id="iconItem"
+          variant="icon"
+          renderIcon={<IconHamburgerLine />}
+          onClick={onClick}
+        >
+          Icon variant
+        </TopNavBar.Item>
+      </div>
     )
   }
 

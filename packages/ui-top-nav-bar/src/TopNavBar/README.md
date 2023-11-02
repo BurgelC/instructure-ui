@@ -1118,10 +1118,11 @@ example: true
           renderBreadcrumb={(
             <TopNavBar.Breadcrumb>
             <Breadcrumb label="You are here:">
-              <Breadcrumb.Link href="#">Student Forecast</Breadcrumb.Link>
-              <Breadcrumb.Link href="#">University of Utah</Breadcrumb.Link>
-              <Breadcrumb.Link href="#">University of Utah Colleges</Breadcrumb.Link>
-              <Breadcrumb.Link>College of Life Sciences</Breadcrumb.Link>
+              <Breadcrumb.Link>Course page 1</Breadcrumb.Link>
+              <Breadcrumb.Link>Course page 2</Breadcrumb.Link>
+              <Breadcrumb.Link>Course page 3</Breadcrumb.Link>
+              <Breadcrumb.Link>Course page 4</Breadcrumb.Link>
+              <Breadcrumb.Link>Course page 5</Breadcrumb.Link>
             </Breadcrumb>
             </TopNavBar.Breadcrumb>
           )}

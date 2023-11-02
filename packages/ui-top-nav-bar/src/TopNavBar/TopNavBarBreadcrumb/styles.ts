@@ -22,22 +22,18 @@
  * SOFTWARE.
  */
 
-import type { ComponentStyle } from '@instructure/emotion'
 import {
   TopNavBarBreadcrumbProps,
+  TopNavBarBreadcrumbStyle,
   TopNavBarBreadcrumbStyleProps
 } from './props'
 import { TopNavBarBreadcrumbTheme } from '@instructure/shared-types'
-
-type TopNavBarBreadcrumbStyle = ComponentStyle<any>
 
 const generateStyle = (
   _componentTheme: TopNavBarBreadcrumbTheme,
   _props: TopNavBarBreadcrumbProps,
   _state: TopNavBarBreadcrumbStyleProps
 ): TopNavBarBreadcrumbStyle => {
-  //const { inverseColor } = state
-
   return {
     topNavBarBreadcrumb: {
       label: 'topNavBarBreadcrumb',
@@ -45,6 +41,7 @@ const generateStyle = (
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-start',
+      flexGrow: 1,
       border: 0,
       outline: 0,
       padding: 0,
@@ -64,10 +61,11 @@ const generateStyle = (
       justifyContent: 'center',
       alignItems: 'center'
     },
-    breadCrumbContainer: {
+    breadcrumbContainer: {
       label: 'topNavBarBreadcrumb__breadCrumbContainer',
       appearance: 'none',
-      textDecoration: 'none'
+      textDecoration: 'none',
+      flexGrow: 1
     }
   }
 }

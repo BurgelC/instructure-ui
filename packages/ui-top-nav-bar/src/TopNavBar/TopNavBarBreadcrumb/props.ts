@@ -53,11 +53,7 @@ type TopNavBarBreadcrumbOwnProps = {
 }
 
 type TopNavBarBreadcrumbStyle = ComponentStyle<
-  | 'topNavBarBreadcrumb'
-  | 'container'
-  | 'iconContainer'
-  | 'icon'
-  | 'breadcrumbContainer'
+  'topNavBarBreadcrumb' | 'iconContainer' | 'icon' | 'breadcrumbContainer'
 >
 
 type TopNavBarBreadcrumbStyleProps = {
