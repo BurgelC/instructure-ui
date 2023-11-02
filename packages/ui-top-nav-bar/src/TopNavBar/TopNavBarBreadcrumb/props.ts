@@ -29,9 +29,13 @@ import { TopNavBarContextType } from '../TopNavBarContext'
 import {
   ChildrenOfType,
   OtherHTMLAttributes,
+  PropValidators,
   TopNavBarBreadcrumbTheme
 } from '@instructure/shared-types'
 import TopNavBarBreadcrumb from './index'
+import { Children as ChildrenPropTypes } from '@instructure/ui-prop-types'
+import PropTypes from 'prop-types'
+import { Breadcrumb } from '@instructure/ui-breadcrumb'
 
 type TopNavBarBreadcrumbProps = TopNavBarBreadcrumbOwnProps &
   WithStyleProps<TopNavBarBreadcrumbTheme, TopNavBarBreadcrumbStyle> &
@@ -45,11 +49,18 @@ type BreadcrumbChild = React.ComponentElement<
 >
 
 type TopNavBarBreadcrumbOwnProps = {
-  id: string
+  /**
+   * The children to be rendered within the `<TopNavBarBreadcrumb />`. Children must be type of `Breadcrumb`.
+   */
   children: ChildrenOfType<BreadcrumbChild>
   onClick?: (
     event: React.MouseEvent<ViewOwnProps> | React.KeyboardEvent<ViewOwnProps>
   ) => void
+
+  /**
+   * A function that returns a reference to root HTML element
+   */
+  elementRef?: (el: HTMLDivElement | null) => void
 }
 
 type TopNavBarBreadcrumbStyle = ComponentStyle<
@@ -60,9 +71,23 @@ type TopNavBarBreadcrumbStyleProps = {
   inverseColor: TopNavBarContextType['inverseColor']
 }
 
+type PropKeys = keyof TopNavBarBreadcrumbOwnProps
+
+type AllowedPropKeys = Readonly<Array<PropKeys>>
+
+const propTypes: PropValidators<PropKeys> = {
+  onClick: PropTypes.func,
+  elementRef: PropTypes.func,
+  children: ChildrenPropTypes.oneOf([Breadcrumb])
+}
+
+const allowedProps: AllowedPropKeys = ['children', 'onClick', 'elementRef']
+
 export type {
   TopNavBarBreadcrumbProps,
   TopNavBarBreadcrumbState,
   TopNavBarBreadcrumbStyle,
   TopNavBarBreadcrumbStyleProps
 }
+
+export { propTypes, allowedProps }

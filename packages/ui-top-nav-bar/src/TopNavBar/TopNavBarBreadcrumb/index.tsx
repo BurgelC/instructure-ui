@@ -24,7 +24,12 @@
 
 /** @jsx jsx */
 import React, { Component } from 'react'
-import { TopNavBarBreadcrumbProps, TopNavBarBreadcrumbState } from './props'
+import {
+  TopNavBarBreadcrumbProps,
+  TopNavBarBreadcrumbState,
+  allowedProps,
+  propTypes
+} from './props'
 import TopNavBar from '../index'
 import { withDeterministicId } from '@instructure/ui-react-utils'
 import { withStyle, jsx } from '@instructure/emotion'
@@ -41,14 +46,24 @@ class TopNavBarBreadcrumb extends Component<
   TopNavBarBreadcrumbProps,
   TopNavBarBreadcrumbState
 > {
-  // static propTypes = propTypes
-  // static allowedProps = allowedProps
+  static propTypes = propTypes
+  static allowedProps = allowedProps
   static defaultProps = {}
 
   declare context: React.ContextType<typeof TopNavBarContext>
   static contextType = TopNavBarContext
 
   ref: HTMLDivElement | null = null
+
+  handleRef = (el: HTMLDivElement | null) => {
+    const { elementRef } = this.props
+
+    this.ref = el
+
+    if (typeof elementRef === 'function') {
+      elementRef(el)
+    }
+  }
 
   componentDidMount() {
     this.props.makeStyles?.({ inverseColor: this.context.inverseColor })
@@ -77,7 +92,7 @@ class TopNavBarBreadcrumb extends Component<
   render() {
     const { children, styles } = this.props
     return (
-      <div css={styles?.topNavBarBreadcrumb}>
+      <div ref={this.handleRef} css={styles?.topNavBarBreadcrumb}>
         <div css={styles?.iconContainer}>{this.renderMenu()}</div>
         <div css={styles?.breadcrumbContainer}>{children}</div>
       </div>
