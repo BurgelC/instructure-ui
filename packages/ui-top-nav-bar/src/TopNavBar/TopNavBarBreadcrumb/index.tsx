@@ -31,15 +31,21 @@ import {
   propTypes
 } from './props'
 import TopNavBar from '../index'
-import { withDeterministicId } from '@instructure/ui-react-utils'
 import { withStyle, jsx } from '@instructure/emotion'
 import generateStyle from '../TopNavBarBreadcrumb/styles'
 import generateComponentTheme from '../TopNavBarBreadcrumb/theme'
 import { testable } from '@instructure/ui-testable'
 import { IconHamburgerLine } from '@instructure/ui-icons'
 import TopNavBarContext from '../TopNavBarContext'
+import { error } from '@instructure/console'
 
-@withDeterministicId()
+/**
+---
+parent: TopNavBar
+id: TopNavBar.Breadcrumb
+---
+@module TopNavBarBreadcrumb
+ **/
 @withStyle(generateStyle, generateComponentTheme)
 @testable()
 class TopNavBarBreadcrumb extends Component<
@@ -91,11 +97,20 @@ class TopNavBarBreadcrumb extends Component<
 
   render() {
     const { children, styles } = this.props
+
+    if (!this.context.inverseColor) {
+      error(
+        false,
+        `[TopNavBarBreadcrumb] If the inverseColor prop is not set to true, TopNavBarBreadcrumb fails to render.`
+      )
+    }
     return (
-      <div ref={this.handleRef} css={styles?.topNavBarBreadcrumb}>
-        <div css={styles?.iconContainer}>{this.renderMenu()}</div>
-        <div css={styles?.breadcrumbContainer}>{children}</div>
-      </div>
+      this.context.inverseColor && (
+        <div ref={this.handleRef} css={styles?.topNavBarBreadcrumb}>
+          <div css={styles?.iconContainer}>{this.renderMenu()}</div>
+          <div css={styles?.breadcrumbContainer}>{children}</div>
+        </div>
+      )
     )
   }
 }
