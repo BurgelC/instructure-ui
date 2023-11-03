@@ -58,7 +58,6 @@ const generateStyle = (
       fontSize: componentTheme.desktopFontSize,
       fontFamily: componentTheme.desktopFontFamily,
       fontWeight: componentTheme.desktopFontWeight,
-      // TODO: do we really need inverse?
       background: inverseColor
         ? componentTheme.desktopBackgroundInverse
         : componentTheme.desktopBackground,
@@ -137,9 +136,7 @@ const generateStyle = (
       flexGrow: 0,
       flexShrink: 0,
       marginBlock: 0,
-      alignItems: 'center',
-      // TODO add proper margin from theme
-      marginInline: componentTheme.desktopMenuItemsContainerInlineMargin
+      alignItems: 'center'
     }
   }
 }

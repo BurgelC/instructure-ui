@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import React from 'react'
+import React, { ComponentElement } from 'react'
 import type { ViewOwnProps } from '@instructure/ui-view'
 import type { ComponentStyle, WithStyleProps } from '@instructure/emotion'
 import { TopNavBarContextType } from '../TopNavBarContext'
@@ -36,6 +36,7 @@ import TopNavBarBreadcrumb from './index'
 import { Children as ChildrenPropTypes } from '@instructure/ui-prop-types'
 import PropTypes from 'prop-types'
 import { Breadcrumb } from '@instructure/ui-breadcrumb'
+import type { BreadcrumbProps } from '@instructure/ui-breadcrumb'
 
 type TopNavBarBreadcrumbProps = TopNavBarBreadcrumbOwnProps &
   WithStyleProps<TopNavBarBreadcrumbTheme, TopNavBarBreadcrumbStyle> &
@@ -52,7 +53,7 @@ type TopNavBarBreadcrumbOwnProps = {
   /**
    * The children to be rendered within the `<TopNavBarBreadcrumb />`. Children must be type of `Breadcrumb`.
    */
-  children: ChildrenOfType<BreadcrumbChild>
+  children: ChildrenOfType<ComponentElement<BreadcrumbProps, Breadcrumb>>
   onClick?: (
     event: React.MouseEvent<ViewOwnProps> | React.KeyboardEvent<ViewOwnProps>
   ) => void
@@ -87,7 +88,8 @@ export type {
   TopNavBarBreadcrumbProps,
   TopNavBarBreadcrumbState,
   TopNavBarBreadcrumbStyle,
-  TopNavBarBreadcrumbStyleProps
+  TopNavBarBreadcrumbStyleProps,
+  BreadcrumbChild
 }
 
 export { propTypes, allowedProps }

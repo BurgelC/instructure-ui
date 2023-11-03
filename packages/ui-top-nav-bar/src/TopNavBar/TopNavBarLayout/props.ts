@@ -46,6 +46,7 @@ import type { ActionItemsChild } from '../TopNavBarActionItems/props'
 import type { BrandChild } from '../TopNavBarBrand/props'
 import type { MenuItemsChild } from '../TopNavBarMenuItems/props'
 import type { UserChild } from '../TopNavBarUser/props'
+import type { BreadcrumbChild } from '../TopNavBarBreadcrumb/props'
 
 import { topNavBarItemTooltipPropType } from '../TopNavBarItem/props'
 
@@ -93,8 +94,14 @@ type CommonTopNavBarLayoutProps = {
    */
   renderUser?: UserChild
 
-  // TODO replace any
-  renderBreadcrumb?: any
+  /**
+   * Displays a hamburger icon with a breadcrumb.
+   *
+   * In __desktop__ mode it renders in the top left corner of the navbar.
+   *
+   * Accepts a `<TopNavBar.Breadcrumb>` component.
+   */
+  renderBreadcrumb?: BreadcrumbChild
 
   /**
    * The 'aria-label' for the underlying `<nav>` element
