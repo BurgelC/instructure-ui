@@ -71,6 +71,7 @@ type TopNavBarDesktopLayoutStyle = ComponentStyle<
   | 'brandContainer'
   | 'menuItemsContainer'
   | 'actionItemsContainer'
+  | 'spacer'
   | 'userContainer'
   | 'breadcrumbContainer'
 >

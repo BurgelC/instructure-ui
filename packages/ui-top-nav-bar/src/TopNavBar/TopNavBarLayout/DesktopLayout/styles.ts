@@ -102,6 +102,9 @@ const generateStyle = (
       marginBlock: 0,
       marginInline: componentTheme.desktopActionItemsContainerInlineMargin
     },
+    spacer: {
+      flexGrow: '1'
+    },
     userContainer: {
       label: 'topNavBarDesktopLayout__userContainer',
       display: 'flex',

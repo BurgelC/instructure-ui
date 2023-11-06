@@ -161,6 +161,8 @@ class TopNavBarDesktopLayout extends Component<TopNavBarDesktopLayoutProps> {
 
         {shouldRenderBreadcrumbBlock && renderBreadcrumb}
 
+        <span css={styles?.spacer} />
+
         {this.hasActionItemsBlock && (
           <div css={styles?.actionItemsContainer}>{renderActionItems}</div>
         )}
