@@ -23,7 +23,7 @@
  */
 
 /** @jsx jsx */
-import React, { Component } from 'react'
+import React, { Component, ReactElement } from 'react'
 import {
   TopNavBarBreadcrumbProps,
   TopNavBarBreadcrumbState,
@@ -35,9 +35,13 @@ import { withStyle, jsx } from '@instructure/emotion'
 import generateStyle from '../TopNavBarBreadcrumb/styles'
 import generateComponentTheme from '../TopNavBarBreadcrumb/theme'
 import { testable } from '@instructure/ui-testable'
-import { IconHamburgerLine } from '@instructure/ui-icons'
+import {
+  IconArrowOpenStartLine,
+  IconHamburgerLine
+} from '@instructure/ui-icons'
 import TopNavBarContext from '../TopNavBarContext'
 import { error } from '@instructure/console'
+import { Link } from '@instructure/ui-link'
 
 /**
 ---
@@ -89,7 +93,7 @@ class TopNavBarBreadcrumb extends Component<
           renderIcon={<IconHamburgerLine />}
           onClick={onClick}
         >
-          Icon variant
+          Hamburger menu
         </TopNavBar.Item>
       </div>
     )
@@ -104,13 +108,33 @@ class TopNavBarBreadcrumb extends Component<
         `[TopNavBarBreadcrumb] If the inverseColor prop is not set to true, TopNavBarBreadcrumb fails to render.`
       )
     }
+
+    const breadcrumbElement = React.Children.toArray(
+      children
+    )[0] as ReactElement
+    const breadCrumbLinks = breadcrumbElement.props.children
+    const lastButOneLink = React.Children.toArray(breadCrumbLinks)[
+      React.Children.count(breadCrumbLinks) - 2
+    ] as ReactElement
+
     return (
-      this.context.inverseColor && (
+      this.context.inverseColor &&
+      (this.context.layout === 'desktop' ? (
         <div ref={this.handleRef} css={styles?.topNavBarBreadcrumb}>
           <div css={styles?.iconContainer}>{this.renderMenu()}</div>
           <div css={styles?.breadcrumbContainer}>{children}</div>
         </div>
-      )
+      ) : (
+        <div ref={this.handleRef} css={styles?.topNavBarBreadcrumb}>
+          <Link
+            href={lastButOneLink.props.href}
+            isWithinText={false}
+            renderIcon={IconArrowOpenStartLine}
+          >
+            {lastButOneLink.props.children}
+          </Link>
+        </div>
+      ))
     )
   }
 }
